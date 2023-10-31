@@ -1,0 +1,66 @@
+<section class="property-binding">
+
+<article>
+    <h3>Interpolation / Interpolação</h3>
+    <p>String renderizada com interpolação: {{ url }}</p>
+    <p>Resultado de 1 + 1 é: {{ 1 + 1 }} </p>
+    <p>Resultado de 1 + 1 não é : {{ 1 + 1 + getValor()}}</p>
+    <p>Curso de angular e gosto do curso: {{ cursoAngular && getCurtirCurso() }}</p>
+</article>
+
+<article>
+    <h3>Property Binding</h3>
+    <img src="{{ urlImage }}">
+    <img [src]=" urlImage">
+</article>
+
+
+<article>
+    <h3>
+        Event Binding
+    </h3>
+
+    <div>
+        <button (click)="botaoClicado()" > 
+            Me clique!
+        </button>
+
+        <input type="text" #campoInput
+        (keyup)="onKeyUp($event)"
+        (keyup.enter)="salvarValor(campoInput.value)"
+        (blur)="salvarValor(campoInput.value)"
+         >
+
+        <p>Valor atual: {{ valorAtual }}</p>
+        <p>Valor salvo: {{ valorSalvo }}</p>
+
+        <span
+            (mouseover)="onMouseOverOut()"
+            (mouseout)="onMouseOverOut()"
+            [class.highlight]="isMouseOver">
+            Passe o mouse sobre mim!
+        </span>
+    </div>
+
+</article>
+</section>
+
+<app-meu-form></app-meu-form>
+
+<section>
+
+    <article>
+        <h3>
+            Input/Output Properties
+        </h3>
+
+        <app-cursos [nome]="nomeDoCurso"></app-cursos>
+
+        <br>
+        <contador [valor]="valorInicial"
+        (mudouValor)="onMudouValor($event)"
+        ></contador>
+    </article>
+
+
+</section>
