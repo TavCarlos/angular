@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'contador',
@@ -13,13 +13,19 @@ valor: number = 0;
 @Output()
 mudouValor = new EventEmitter;
 
+@ViewChild('campoInput') campoValorInput = {} as ElementRef; //utilizando o valor de um elemento html
+//através de uma variável local que faz referência a um elemento html. 
+//nessa caso o input em outputcomponent.
+
 decrementa(){
-  this.valor--;
+  this.campoValorInput.nativeElement.value--;
+  //this.valor--;
   this.mudouValor.emit({novoValor: this.valor});
 }
 
 incrementa(){
-  this.valor++;
+  this.campoValorInput.nativeElement.value++;
+  //this.valor++;
   this.mudouValor.emit({novoValor: this.valor})
 }
 

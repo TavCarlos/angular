@@ -1,0 +1,36 @@
+<h2>*ngIf</h2>
+
+<div *ngIf="meusCursos.length > 0; else semCursos">
+   <p>Listagem de cursos.</p>
+</div>
+
+<ng-template #semCursos>
+    <p>Não há cursos nessa listagem.</p>
+</ng-template>
+
+<button (click)="onButtonClick()">Mostrar ou esconder os cursos</button>
+
+<div *ngIf="!mostrarCursos; else naoMostrarCursos">
+    <p>Lista de cursos aqui.</p>
+</div>
+
+<ng-template #naoMostrarCursos>
+    <p>Não existe cursos para serem listados.</p>
+</ng-template>
+
+<!-- Outra alternativa -->
+
+<div [hidden]="mostrarCursos">
+    <p>Lista de cursos aqui.</p>
+</div>
+
+<div [hidden]="!mostrarCursos">
+    <p>Não existe cursos para serem listados.</p>
+</div>
+
+<!-- O hidden é uma propriedade do html, não é uma diretiva do angular,
+    é uma alternativa ao *ngIf, porém ele não remove o elemento do DOM, ele apenas o esconde 
+
+    É intessante utiliar o hidden quando você tem um elemento que se altere com frequência, como no clique
+    do botão, assim, não há necessidade de carregar os dados toda vez que o botão é assionado.
+-->
