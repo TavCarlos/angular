@@ -1,0 +1,13 @@
+<div>
+    <ng-content select=".titulo"></ng-content>
+    <ng-content select=".corpo"></ng-content>
+</div>
+
+<!-- Com o ngContent eu consigo fazer com que um determinado conteúdo nesse meu template
+será apresentando pelo template-pai (app.component.html), sendo assim, tudo que eu colocar
+dentro das tags relacionadas a esse template "<app-diretiva-ngcontent>" será alocado 
+para os meus ng-content.
+    
+Caso haja mais de um ng-content, será necessário a utilização do select, que servirá para
+alocar os recursos para os locais certos. 
+-->

@@ -1,0 +1,11 @@
+<p>Descrição: {{tarefa.desc}}</p>
+<p>Responsável: {{tarefa.responsavel?.nome}} </p>
+
+<!--  O Operador elvis '?' irá verificar se o conteúdo que está dentro da variável responsavel
+    é equivalente a um nulo. Caso for, ele não irá produzir nenhum log de erro e ficará vazio no local
+    que foi designado no designe.
+
+    Operador elvis '?' faz parecido ao que um operador ternário faria, porem de forma simplificada.
+
+    Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : '' }}
+-->
