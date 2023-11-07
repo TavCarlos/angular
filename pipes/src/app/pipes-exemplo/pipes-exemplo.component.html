@@ -1,0 +1,11 @@
+
+<!-- Pipes servem como modificadores, assim é possível modificar dados que são enviados ao template  -->
+<div>
+    <p>Livro: {{livro.titulo | uppercase | camelCase}}</p> <!-- CamelCase é pipe personalizada -->
+    <p>Estrelas: {{livro.rating | number:'1.1-1' }}</p><!-- 1 = número inteiro/1-1 quantidade de decimais-->
+    <p>Numero de Páginas: {{livro.numeroPaginas | number}}</p>
+    <p>Preço: {{livro.preco | currency:'BRL'}}</p>
+    <p>Data de lançamento: {{livro.dataLancamento | date:'dd-MMM-yyyy'}}</p>
+    <br>
+    <p>Livro: {{livro | json}}</p>
+</div>
