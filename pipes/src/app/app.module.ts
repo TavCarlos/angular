@@ -2,6 +2,8 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+
 import { PipesExemploComponent } from './pipes-exemplo/pipes-exemplo.component';
 import { CamelCasePipe } from './camel-case.pipe';
 
@@ -13,7 +15,8 @@ import { CamelCasePipe } from './camel-case.pipe';
     CamelCasePipe,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [
       {  
