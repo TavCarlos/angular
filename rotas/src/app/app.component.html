@@ -1,7 +1,7 @@
 <header>
   <a routerLink="">Home</a>
   <a routerLink="/login">Login</a>
-  <a routerLink="/cursos">Cursos</a>
+  <a routerLink="/cursos" [queryParams]="{pagina:1}">Cursos</a>
   <a [routerLink]="['curso', idCurso.value]">Curso com id</a>
 </header>
 
