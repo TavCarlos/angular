@@ -21,7 +21,8 @@ export class AlunosFormComponent {
         (params: any) => {
         let id = params['id'];
 
-        this.aluno = this.alunosService.getAluno(id);
+        //this.aluno = this.alunosService.getAluno(id);
+        this.aluno = this.alunosService.getAlunoAtributo();
 
         if(this.aluno == null) this.aluno = {};
         }

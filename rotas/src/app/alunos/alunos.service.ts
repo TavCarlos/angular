@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AlunosService {
 
+  aluno!: any;
   alunos: any[] = [
     {id: 1, nome: 'David', email: 'david@email.com'},
     {id: 2, nome: 'Mio', email: 'mio@email.com'},
@@ -20,8 +21,16 @@ export class AlunosService {
   getAluno(id: number){
     for(let i=0; i<this.alunos.length; i++){
       let aluno = this.alunos[i];
-      if(aluno.id == id) return aluno;
+      //if(aluno.id == id) return aluno;
+      if(aluno.id == id){
+        this.aluno = aluno;
+        return aluno;
+      }
     }
     return null;
+  }
+
+  getAlunoAtributo(){
+    return this.aluno;
   }
 }

@@ -1,8 +1,8 @@
-<header>
+<header *ngIf="mostrarMenu">
   <a routerLink="">Home</a>
   <a routerLink="/login">Login</a>
   <a routerLink="/cursos" [queryParams]="{pagina:1}">Cursos</a>
-  <a [routerLink]="['curso', idCurso.value]">Curso com id</a>
+  <a [routerLink]="['cursos', idCurso.value]">Curso com id</a>
   <a routerLink="/alunos">Alunos</a>
 </header>
 
