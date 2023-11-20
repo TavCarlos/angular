@@ -1,0 +1,40 @@
+<form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+    <div>
+        <label for="nome">Nome</label>
+        <!--input type="text" name="nome" id="nome" placeholder="Nome" ngModel-->
+        <!--input type="text" name="nome" id="nome" placeholder="Nome" [(ngModel)]="usuario.nome"-->
+        <input type="text" name="nome" id="nome" placeholder="Nome" 
+        [ngModel]="usuario.nome" required #nome="ngModel">
+    </div>
+    <div *ngIf="!nome.valid && nome.touched"> <!-- Atribuindo ngModel a variável local nome -->
+        * Campo Obrigatório                   <!-- É possível colocar essa mesagem dinâmica -->
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <!--input type="email" name="email" id="email" placeholder="nome@email.com" ngModel  1° -->
+        <!--input type="email" name="email" id="email" placeholder="nome@email.com" [(ngModel)]="usuario.email"-->
+        <input type="email" name="email" id="email" placeholder="nome@email.com" 
+        [ngModel]="usuario.email" required  email #email="ngModel">
+    </div>
+    <div *ngIf="!email.valid && email.touched">
+        * Campo Obrigatório
+    </div>
+
+    <button type="submit" [disabled]="!formulario.valid">Submit</button>
+</form>
+
+<!--  1°
+    O ngForm indica para o angular que ele estará tratando de um formulário
+    Assim, ele consegue associar os valores apresentados no input através do ngModel e da tag 'name'
+-->
+
+<!-- 2°  
+    utilizando o two-way-data-binding acaba alterando tanto o valor do formulário
+    quanto do objeto usuario.
+-->
+
+<!-- 3° 
+    Utilizando o Property-Binding do ngModel irá alterar o valor do formulário, porém irá deixar
+    o valor do objeto intacto. Sendo assim, se houver mudança nesses campos o objeto não será atualizado
+-->

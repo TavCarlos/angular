@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanMatchFn } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { authGuard } from './guards/guard.auth';
+import { authGuard, authLoad } from './guards/guard.auth';
 import { AlunosGuard } from './guards/alunos.guard';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 
 const routes: Routes = [
@@ -16,10 +17,13 @@ const routes: Routes = [
   {path: 'alunos',
     loadChildren: () => import('./alunos/alunos.module').then( //lazy routing
       mod => mod.AlunosModule),
-    canActivate: [authGuard]
+    canActivate: [authGuard],
+    canMatch: [authLoad]
   },
   {path: 'login', component: LoginComponent},
-  {path: '', component: HomeComponent, canActivate: [authGuard]}
+  {path: '', component: HomeComponent, canActivate: [authGuard]},
+  {path: '**', component: PaginaNaoEncontradaComponent, canActivate: [authGuard]} //Caso o usuário
+  //digite uma rota que não exista, ele irá refirecionar para a página de login com authGuard.
 ];
 
 @NgModule({

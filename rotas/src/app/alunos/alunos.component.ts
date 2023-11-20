@@ -15,4 +15,6 @@ export class AlunosComponent {
   ngOnInit(){
     this.alunos = this.alunosService.getAlunos();
   }
+
+  
 }

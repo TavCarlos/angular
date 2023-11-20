@@ -1,0 +1,8 @@
+input{
+    display: block;
+    margin: 5px 0px 5px 0px;
+}
+
+.ng-invalid.ng-touched:not(form){
+    border: 2px solid red;
+}

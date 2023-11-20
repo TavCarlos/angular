@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Aluno } from './aluno';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AlunosService {
 
   aluno!: any;
-  alunos: any[] = [
+  alunos: Aluno[] = [
     {id: 1, nome: 'David', email: 'david@email.com'},
     {id: 2, nome: 'Mio', email: 'mio@email.com'},
     {id: 3, nome: 'Lucas', email: 'lucas@email.com'}
