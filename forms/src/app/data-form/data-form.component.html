@@ -1,1 +1,22 @@
-<p>data-form works!</p>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="nome">Nome</label>
+        <input type="text" formControlName="nome" id="nome" placeholder="Nome" >
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" id="email" placeholder="nome@email.com">
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
+<!-- 
+
+[formGroup]="formulario" -> associar o meu formulário com a variável de formulário 
+que existe no component;
+
+formControlName="nome" -> associar o input com o nome do atributo dentro da variável formulário
+
+-->
