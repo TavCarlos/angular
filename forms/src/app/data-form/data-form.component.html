@@ -9,7 +9,34 @@
         <input type="email" formControlName="email" id="email" placeholder="nome@email.com">
     </div>
 
+    <div formGroupName="endereco">
+        <div class="cep">
+            <label for="cep">CEP</label>
+            <input type="text" formControlName="cep" id="cep">
+            <label for="numero">Número</label>
+            <input type="text" formControlName="numero" id="numero">
+            <label for="complemento">Complemento</label>
+            <input type="text" formControlName="complemento" id="complemento">
+        </div>
+
+        <div class="Rua">
+            <label for="rua">Rua</label>
+            <input type="text" formControlName="rua" id="rua">
+        </div>
+
+        <div class="end">
+            <label for="bairro">Bairro</label>
+            <input type="text" formControlName="bairro" id="bairro">
+            <label for="cidade">Cidade</label>
+            <input type="text" formControlName="cidade" id="cidade">
+            <label for="estado">Estado</label>
+            <input type="text" formControlName="estado" id="estado">
+        </div>
+    </div>
+
+
     <button type="submit">Submit</button>
+    <button type="button" (click)="resetarForm()">Cancelar</button>
 </form>
 
 <!-- 

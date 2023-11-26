@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-data-form',
@@ -12,7 +13,8 @@ export class DataFormComponent {
   formulario!: FormGroup
 
   constructor(
-    private formBuilder: FormBuilder){}
+    private formBuilder: FormBuilder,
+    private http: HttpClient){}
 
   ngOnInit(){
 
@@ -22,14 +24,37 @@ export class DataFormComponent {
     }); */
 
     this.formulario = this.formBuilder.group({
-      nome: [null],
-      email: [null]
+      nome: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      endereco: this.formBuilder.group({
+        cep: [null, Validators.required],
+        numero: [null, Validators.required],
+        complemento: [null],
+        rua: [null, Validators.required],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        estado: [null, Validators.required]
+      })
     })
   }
 
   onSubmit(){
     console.log(this.formulario.value)
+
+    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+        .pipe(map((dados: any) => dados))
+        .subscribe((dados) => {
+          console.log('DADOS: ', dados);
+          //resertar formulário
+          this.resetarForm();
+        })
   }
+
+  resetarForm(){
+    this.formulario.reset();
+  }
+
+
 }
 
 //A variável formulário irá representar o formulário, todo o código ficará dentro do componente.
@@ -43,3 +68,8 @@ export class DataFormComponent {
 
 //Utilizando o formBuilder é o mesmo que usar o formGroup/ formControl
 //porém de maneira simplificada. (precisa importar o 'ReactiveFormsModule' no módulo)
+//Para utilizar o httpClient é necessário importar o HttpclientModule no módulo.
+
+//----------------------------------------------------------------------------------//
+
+//Validators, são os próximos atributos que podem ser inseridos dentro do formControl
