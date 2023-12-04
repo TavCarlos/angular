@@ -1,0 +1,8 @@
+{
+    "Cursos": [
+        { 
+            "id": 1, 
+            "nome": "Angular" 
+        }
+    ]
+}
